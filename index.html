@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profilverbesserung durch KI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Datingprofilverbesserung durch KI</h1>
+    <div class="container">
+        <!-- Left side: Form for user input -->
+        <div class="input-section">
+            <h2>Gib deine Profildaten ein</h2>
+            <form id="profile-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name-input" placeholder="Name" required>
+                
+                <label for="age">Alter:</label>
+                <input type="text" id="age-input" placeholder="Alter" required>
+
+                <label for="height">Größe (cm):</label>
+                <input type="text" id="height-input" placeholder="Größe" required>
+
+                <label for="location">Ort:</label>
+                <input type="text" id="location-input" placeholder="Ort" required>
+
+                <label for="description">Beschreibung:</label>
+                <textarea id="description-input" placeholder="Beschreibe dich"></textarea>
+
+                <label for="children-desire">Kinderwunsch:</label>
+                <input type="text" id="children-desire-input" placeholder="Ja/Nein">
+
+                <label for="smoker">Raucherin:</label>
+                <input type="text" id="smoker-input" placeholder="Ja/Nein/Manchmal">
+
+                <label for="languages">Fremdsprachen:</label>
+                <input type="text" id="languages-input" placeholder="Deutsch/ Englisch/ ...">
+
+                <label for="job">Beruf:</label>
+                <input type="text" id="job-input" placeholder="Arzt/ Erzieher">
+
+                <label for="interests">Interessen:</label>
+                <input type="text" id="interests-input" placeholder="Interessen">
+
+                <label for="searchFor">Auf der Suche nach:</label>
+                <input type="text" id="searchFor-input" placeholder="Freunde/ Partner/ Was lockeres">
+                
+                <!-- Image Upload Input -->
+                <label for="profile-image">Profilbild hochladen:</label>
+                <input type="file" id="profile-image-input" accept="image/*">
+
+                <button type="button" id="submit-btn">Profil verbessern</button>
+            </form>
+        </div>
+
+        <!-- Right side: Output for the AI-enhanced profile -->
+        <div class="output-section">
+            <h2>Verbessertes Profil</h2>
+            <div class="profile-card">
+                <div class="profile-header">
+                    <img src="profile-picture.jpg" alt="Profilbild" class="profile-image" id="profile-picture">
+                    <div class="profile-info">
+                        <h2 id="name">Anna</h2>
+                        <p><strong id="age">29 Jahre</strong> - <span id="height">172 cm</span></p>
+                        <p id="location">Köln</p>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <p id="description">Ich bin aktiv und abenteuerlustig und suche das gleiche bei meinen Freunden.</p>
+                </div>
+
+                <div class="profile-sections">
+                    <div class="section">
+                        <h3>Mehr über mich</h3>
+                        <p id="children-desire">Kinderwunsch: Ja</p>
+                        <p id="smoker">Raucherin: Ja, manchmal</p>
+                        <p id="languages">Fremdsprachen: Deutsch, Englisch, Französisch</p>
+                        <p id="job">Beruf: Medizin/Gesundheit</p>
+                        <p id="interests">Interessen: Natur, Lesen, Sport, Reisen, Tiere</p>
+                        <p id="searchFor">Auf der Suche nach: Einem Parter</p>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-rating">
+                <h3>Bewerte die Verbesserung</h3>
+                <div id="thumbs">
+                    <span id="thumb-up" data-value="1">👍</span>
+                    <span id="thumb-down" data-value="0">👎</span>
+                </div>
+            </div>
+            <button id="submit-rating">Submit Rating</button>
+        </div>
+
+        <div id="wait-overlay" style="display: none;">
+            <div id="wait-message">
+                Bitte warte während dein Profil verbessert wird...
+            </div>
+        </div>
+    </div>
+
+    <script src="profile.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>

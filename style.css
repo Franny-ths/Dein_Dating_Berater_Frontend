@@ -1,0 +1,294 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*default */
+:root {
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --card-background-color: #fff;
+    --input-background-color: #fff;
+    --button-background-color: #3498db;
+    --button-text-color: #fff;
+    --button-hover-color: #2980b9;
+    --overlay-background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Light mode styles */
+@media (prefers-color-scheme: light) {
+    :root {
+        --background-color: #f4f4f4;
+        --text-color: #333;
+        --card-background-color: #fff;
+        --input-background-color: #fff;
+        --button-background-color: #3498db;
+        --button-background-color-unselected: #969696;
+        --button-text-color: #fff;
+        --button-hover-color: #2980b9;
+        --overlay-background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #1e1e1e;
+        --text-color: #e0e0e0;
+        --card-background-color: #333;
+        --input-background-color: #444;
+        --button-background-color: #2c3e50;
+        --button-background-color-unselected: #5d5d5d;
+        --button-text-color: #fff;
+        --button-hover-color: #34495e;
+        --overlay-background-color: rgba(255, 255, 255, 0.2);
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    padding: 20px 20px 0px 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    flex-direction: row;
+    /* Default for larger screens */
+    color: var(--text-color);
+
+}
+
+/* Make the container stack elements vertically for small screens */
+@media (max-width: 1000px) {
+    .container {
+        flex-direction: column;
+        padding: 10px;
+    }
+}
+
+.input-section,
+.output-section {
+    width: 49.5%;
+    background-color: var(--card-background-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* On small screens, input and output sections take full width */
+@media (max-width: 1000px) {
+
+    .input-section,
+    .output-section {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: var(--text-color);
+    font-size: 1.5em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,
+textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    /* Ensure input fields take full width */
+    background-color: var(--input-background-color);
+    color: var(--text-color);
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--button-hover-color);
+}
+
+.output-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.profile-card {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+}
+
+/* On small screens, stack the profile image and info vertically */
+@media (max-width: 1000px) {
+    .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile-image {
+        margin-bottom: 10px;
+    }
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+    display: block;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-info h1 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.profile-details,
+.profile-sections {
+    margin-top: 20px;
+}
+
+.profile-details h2,
+.section h3 {
+    color: #e74c3c;
+    margin-bottom: 10px;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section p {
+    margin-bottom: 5px;
+}
+
+/* Adjust font size for smaller screens */
+@media (max-width: 1000px) {
+    h2 {
+        font-size: 1.25em;
+    }
+
+    .profile-info h1 {
+        font-size: 20px;
+    }
+
+    .profile-card {
+        padding: 15px;
+    }
+}
+
+#wait-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--overlay-background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* The message box */
+#wait-message {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1.5rem;
+    color: black;
+    text-align: center;
+}
+
+/* Reduce padding and font size of the wait message on small screens */
+@media (max-width: 1000px) {
+    #wait-message {
+        padding: 15px;
+        font-size: 1.25rem;
+    }
+}
+
+#thumbs {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#thumbs span {
+    font-size: 2em;
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 20%;
+    /* Default color */
+    background-color: #00000000;
+}
+
+#thumbs span.selected {
+    background-color: green;
+    /* Selected thumbs-up color */
+}
+
+#thumbs span.down-selected {
+    background-color: red;
+    /* Selected thumbs-down color */
+}
+
+#submit-rating {
+    background-color: var(--button-background-color-unselected);
+}
+
+#submit-rating.rated {
+    background-color: var(--button-background-color);
+}
+
+.profile-rating {
+    align-self: center;
+    margin-top: 30px;
+}
