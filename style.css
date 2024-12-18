@@ -4,11 +4,12 @@
     box-sizing: border-box;
 }
 
-/*Standard mode */
+/* Standard mode */
 :root {
     --background-color: #f4f4f4;
+    --background-color-block: #f4f4f4;
     --text-color: #333;
-    --card-background-color: #fff;
+    --card-background-color: #9a9a9a;
     --input-background-color: #fff;
     --button-background-color: #3498db;
     --button-text-color: #fff;
@@ -19,9 +20,10 @@
 /* Light mode */
 @media (prefers-color-scheme: light) {
     :root {
-        --background-color: #f4f4f4;
+        --background-color: #e7e7e7;
+        --background-color-block: #f0ebeb;
         --text-color: #333;
-        --card-background-color: #fff;
+        --card-background-color: #e6e5e5;
         --input-background-color: #fff;
         --button-background-color: #3498db;
         --button-background-color-unselected: #969696;
@@ -31,10 +33,11 @@
     }
 }
 
-/* Dark mode */
+/* Dark mode  */
 @media (prefers-color-scheme: dark) {
     :root {
         --background-color: #1e1e1e;
+        --background-color-block: #4a4a4a;
         --text-color: #e0e0e0;
         --card-background-color: #333;
         --input-background-color: #444;
@@ -138,13 +141,12 @@ button:hover {
 .output-section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .profile-card {
     margin-top: 20px;
     padding: 20px;
-    background-color: var(--background-color);
+    background-color: var(--background-color-block);
     color: var(--text-color);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
@@ -190,8 +192,8 @@ button:hover {
 
 .profile-details h2,
 .section h3 {
-    color: #e74c3c;
     margin-bottom: 10px;
+    text-decoration: underline;
 }
 
 .section {
@@ -230,6 +232,7 @@ button:hover {
 }
 
 #wait-message {
+    max-width: 80vw;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
@@ -278,6 +281,21 @@ button:hover {
 }
 
 .profile-rating {
-    align-self: center;
     margin-top: 30px;
+    background-color: var(--background-color-block);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.profile-rating.info{
+    text-align: center;
+ }
+
+#rating_completed {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#info {
+    font-size: small;
 }

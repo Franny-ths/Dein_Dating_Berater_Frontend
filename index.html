@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,11 @@
     <link rel="stylesheet" href="style.css">
     <meta property="og:title" content="Dein Dating Berater" />
     <meta property="og:description" content="Verbessert dein Online Dating Profil." />
-    <meta property="og:image" content="https://franny-ths.github.io/Dein_Dating_Berater_Frontend/Images/Vorschaubild.png" />
-    <meta property="og:url" content="https://franny-ths.github.io/Dein_Dating_Berater_Frontend/" />
-    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://" />
+    <meta property="og:url" content="https://" />
+    <meta property="og:type" content="website" />
 </head>
+
 <body>
     <h1>Datingprofilverbesserung durch KI</h1>
     <div class="container">
@@ -18,34 +20,34 @@
             <h2>Gib deine Profildaten ein</h2>
             <form id="profile-form">
                 <label for="name">Name:</label>
-                <input type="text" id="name-input" placeholder="Name" required>
+                <input type="text" id="name-input" placeholder="Max Mustermann" required>
 
                 <label for="age">Alter:</label>
-                <input type="text" id="age-input" placeholder="Alter" required>
+                <input type="number" id="age-input" placeholder="18..." required max="99" min="16">
 
                 <label for="height">Größe (cm):</label>
-                <input type="text" id="height-input" placeholder="Größe" required>
+                <input type="number" id="height-input" placeholder="175..." required max="250" min="10">
 
-                <label for="location">Ort:</label>
-                <input type="text" id="location-input" placeholder="Ort" required>
+                <label for="location">Stadt/Land:</label>
+                <input type="text" id="location-input" placeholder="Köln/ Deutschland/ ..." required>
 
                 <label for="description">Beschreibung:</label>
-                <textarea id="description-input" placeholder="Beschreibe dich"></textarea>
+                <textarea id="description-input" placeholder="Beschreibe dich ..."></textarea>
 
                 <label for="children-desire">Kinderwunsch:</label>
-                <input type="text" id="children-desire-input" placeholder="Ja/Nein">
+                <input type="text" id="children-desire-input" placeholder="Ja/ Nein">
 
-                <label for="smoker">Raucherin:</label>
-                <input type="text" id="smoker-input" placeholder="Ja/Nein/Manchmal">
+                <label for="smoker">Rauchen:</label>
+                <input type="text" id="smoker-input" placeholder="Ja/ Nein/ Manchmal">
 
                 <label for="languages">Fremdsprachen:</label>
                 <input type="text" id="languages-input" placeholder="Deutsch/ Englisch/ ...">
 
                 <label for="job">Beruf:</label>
-                <input type="text" id="job-input" placeholder="Arzt/ Erzieher">
+                <input type="text" id="job-input" placeholder="Arzt/ Erzieher/ ...">
 
                 <label for="interests">Interessen:</label>
-                <input type="text" id="interests-input" placeholder="Interessen">
+                <input type="text" id="interests-input" placeholder="Volleyball/ ...">
 
                 <label for="searchFor">Auf der Suche nach:</label>
                 <input type="text" id="searchFor-input" placeholder="Freunde/ Partner/ Was lockeres">
@@ -61,7 +63,7 @@
             <h2 id="headline_output">Beispiel Profil:</h2>
             <div class="profile-card">
                 <div class="profile-header">
-                    <img src="profile-picture.jpg" alt="Profilbild" class="profile-image" id="profile-picture">
+                    <img src="/Images/profile-picture.jpg" alt="Profilbild" class="profile-image" id="profile-picture">
                     <div class="profile-info">
                         <h2 id="name">Anna</h2>
                         <p><strong id="age">29 Jahre</strong> - <span id="height">172 cm</span></p>
@@ -76,7 +78,7 @@
                     <div class="section">
                         <h3>Mehr über mich</h3>
                         <p id="children-desire">Kinderwunsch: Ja</p>
-                        <p id="smoker">Raucherin: Ja, manchmal</p>
+                        <p id="smoker">Rauchen: Ja, manchmal</p>
                         <p id="languages">Fremdsprachen: Deutsch, Englisch, Französisch</p>
                         <p id="job">Beruf: Medizin/Gesundheit</p>
                         <p id="interests">Interessen: Natur, Lesen, Sport, Reisen, Tiere</p>
@@ -84,31 +86,43 @@
                     </div>
                 </div>
             </div>
-            <div id="rating_field" style="display: none;">
-                <div class="profile-rating" >
-                    <h3>Bewerte die Verbesserung</h3>
-                    <div id="thumbs">
-                        <span id="thumb-up" data-value="1">👍</span>
-                        <span id="thumb-down" data-value="0">👎</span>
-                    </div>
-                    <div id="improvement_message">
-                        <label for="improvement_message">Feedback:</label>
-                        <textarea id="improvement_message_input"
-                            placeholder="Das hat mir (nicht) gefallen... "></textarea>
-                    </div>
+            <div class="profile-rating" id="rating_field" style="display: none;">
+                <h3>Bewerte die Verbesserung</h3>
+                <div id="thumbs">
+                    <span id="thumb-up" data-value="1">👍</span>
+                    <span id="thumb-down" data-value="0">👎</span>
+                </div>
+                <div id="improvement_message">
+                    <label for="improvement_message">Feedback:</label>
+                    <textarea id="improvement_message_input" placeholder="Das hat mir (nicht) gefallen... "></textarea>
                 </div>
                 <button id="submit-rating">Bewertung abschicken</button>
             </div>
+            <div id="rating_completed" class="profile-rating" style="display: none;">Bewertung erfolgreich abgeschickt!
+                ✅</div>
         </div>
 
-        <div id="wait-overlay" style="display: none;">
+        <div id="wait-overlay" style="display: flex;">
+
             <div id="wait-message">
-                Bitte warte während dein Profil verbessert wird...
+                <span> &#8505; </span> <br>
+                Dieser Prototyp wurde im Rahmen einer Thesis entwickelt. Sämtliche eingegebenen Daten werden
+                ausschließlich von der Erstellerin genutzt und sind für Dritte unzugänglich. Hochgeladene Bilder werden
+                nicht gespeichert, und andere eingegebene Daten können von der Erstellerin erst nach dem Absenden des
+                Nutzer-Feedbacks eingesehen werden. Das Feedback dient dazu, weitere Generierungen zu unterstützen und
+                diese noch besser und präziser zu gestalten.
             </div>
         </div>
     </div>
 
     <script src="profile.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
+<div id="info" class="profile-rating info">
+    <span> &#8505; </span> <br>
+    Dieser Prototyp wurde im Rahmen einer Thesis entwickelt. Sämtliche eingegebenen Daten werden ausschließlich von der
+    Erstellerin genutzt und sind für Dritte unzugänglich. Hochgeladene Bilder werden nicht gespeichert, und andere
+    eingegebene Daten können von der Erstellerin erst nach dem Absenden des Nutzer-Feedbacks eingesehen werden. Das
+    Feedback dient dazu, weitere Generierungen zu unterstützen und diese noch besser und präziser zu gestalten.
+</div>
+
 </html>

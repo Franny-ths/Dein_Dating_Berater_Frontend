@@ -3,15 +3,19 @@ const debugLog = false;
 let url = "";
 
 if (runLocal) {
+    if (debugLog) {
+        console.log(`Backend server running on http://localhost:5000`);
+        console.log(`Profile Database on http://localhost:5000/api/admin/profiles`)
+        console.log(`Reset Profile Database on http://localhost:5000/api/admin/reset-profiles`)
+    }
     url = "http://localhost:5000/api/";
-    console.log(`Backend server running on http://localhost:5000`);
-    console.log(`Profile Database on http://localhost:5000/api/admin/profiles`)
-    console.log(`Reset Profile Database on http://localhost:5000/api/admin/reset-profiles`)
 } else {
+    if (debugLog) {
+        console.log(`Backend server running on https://dein-dating-berater-backend.onrender.com`);
+        console.log(`Profile Database on https://dein-dating-berater-backend.onrender.com/api/admin/profiles`);
+        console.log(`Reset Profile Database on https://dein-dating-berater-backend.onrender.com/api/admin/reset-profiles`)
+    }
     url = "https://dein-dating-berater-backend.onrender.com/api/";
-    console.log(`Backend server running on https://dein-dating-berater-backend.onrender.com`);
-    console.log(`Profile Database on https://dein-dating-berater-backend.onrender.com/api/admin/profiles`);
-    console.log(`Reset Profile Database on https://dein-dating-berater-backend.onrender.com/api/admin/reset-profiles`)
 }
 
 ;
@@ -29,10 +33,18 @@ const rating_div = document.getElementById("rating_field");
 const thumbUp = document.getElementById("thumb-up");
 const thumbDown = document.getElementById("thumb-down");
 const ratingButton = document.getElementById("submit-rating");
+const ratingCompleted = document.getElementById("rating_completed");
 
 thumbUp.addEventListener("click", notYetReady);
 thumbDown.addEventListener("click", notYetReady);
 document.getElementById("submit-rating").addEventListener("click", notYetReady);
+
+waitOverlay.addEventListener("click", removeInfo);
+
+function removeInfo() {
+    waitOverlay.style.display = "none";
+    waitOverlay.removeEventListener("click", removeInfo);
+}
 
 // Methode um die Daten anzuzeigen
 function updateProfile(data) {
@@ -80,9 +92,9 @@ function displayImagePreview(imageFile) {
     reader.onload = function (e) {
         const profilePicture = document.getElementById('profile-picture');
         profilePicture.src = e.target.result;
-        profilePicture.style.display = 'block'; 
+        profilePicture.style.display = 'block';
     };
-    reader.readAsDataURL(imageFile); 
+    reader.readAsDataURL(imageFile);
 }
 
 // Methode um Profildaten an das Backend zu senden
@@ -93,7 +105,7 @@ async function sendProfileData(profileData) {
     waitOverlay.style.display = 'flex';
 
     // Original Profil speichern
-    compareableProfiles.originalProfile = JSON.stringify(profileData);  
+    compareableProfiles.originalProfile = JSON.stringify(profileData);
 
     try {
         const response = await fetch(url + 'improve-profile', {
@@ -105,7 +117,7 @@ async function sendProfileData(profileData) {
         });
 
 
-        const result = await response.json();  
+        const result = await response.json();
         if (debugLog) console.log("Antwort vom Backend: " + result.improvedProfile);
         const data = result.improvedProfile
 
@@ -160,13 +172,13 @@ function workingDown() {
 
 
 function notYetReady() {
-    alert("Bitte Verbessere zuerst dein Profil.")
+    alert("Bitte verbessere zuerst dein Profil.")
 }
 
 // Submit rating to backend
 async function submitRating() {
     if (selectedRating === null) {
-        alert("Bitte wähle eine Berwertung aus bevor du sie abschickst.");
+        alert("Bitte wähle eine Bewertung aus bevor du sie abschickst.");
         return;
     }
     waitMessage.innerHTML = "Bitte warte während deine Bewertung hochgeladen wird...";
@@ -193,8 +205,9 @@ async function submitRating() {
         });
 
         const data = await response.json();
-        console.log("Bewertung erfolgreich hochgeladen:", data);
+        if (debugLog) console.log("Bewertung erfolgreich hochgeladen:", data);
         rating_div.style.display = "none";
+        ratingCompleted.style.display = "block";
 
     } catch (error) {
         console.error("Error beim Hochladen der Bewertung", error);
