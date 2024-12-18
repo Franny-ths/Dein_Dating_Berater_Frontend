@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-/*default */
+/*Standard mode */
 :root {
     --background-color: #f4f4f4;
     --text-color: #333;
@@ -16,7 +16,7 @@
     --overlay-background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Light mode styles */
+/* Light mode */
 @media (prefers-color-scheme: light) {
     :root {
         --background-color: #f4f4f4;
@@ -31,7 +31,7 @@
     }
 }
 
-/* Dark mode styles */
+/* Dark mode */
 @media (prefers-color-scheme: dark) {
     :root {
         --background-color: #1e1e1e;
@@ -64,12 +64,10 @@ h1 {
     justify-content: space-between;
     padding: 20px;
     flex-direction: row;
-    /* Default for larger screens */
     color: var(--text-color);
 
 }
 
-/* Make the container stack elements vertically for small screens */
 @media (max-width: 1000px) {
     .container {
         flex-direction: column;
@@ -86,7 +84,6 @@ h1 {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-/* On small screens, input and output sections take full width */
 @media (max-width: 1000px) {
 
     .input-section,
@@ -120,7 +117,6 @@ textarea {
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 100%;
-    /* Ensure input fields take full width */
     background-color: var(--input-background-color);
     color: var(--text-color);
 }
@@ -158,7 +154,6 @@ button:hover {
     align-items: center;
 }
 
-/* On small screens, stack the profile image and info vertically */
 @media (max-width: 1000px) {
     .profile-header {
         flex-direction: column;
@@ -207,7 +202,6 @@ button:hover {
     margin-bottom: 5px;
 }
 
-/* Adjust font size for smaller screens */
 @media (max-width: 1000px) {
     h2 {
         font-size: 1.25em;
@@ -235,7 +229,6 @@ button:hover {
     z-index: 9999;
 }
 
-/* The message box */
 #wait-message {
     background-color: white;
     padding: 20px;
@@ -246,7 +239,6 @@ button:hover {
     text-align: center;
 }
 
-/* Reduce padding and font size of the wait message on small screens */
 @media (max-width: 1000px) {
     #wait-message {
         padding: 15px;
@@ -266,18 +258,15 @@ button:hover {
     margin-right: 10px;
     padding: 5px;
     border-radius: 20%;
-    /* Default color */
     background-color: #00000000;
 }
 
 #thumbs span.selected {
     background-color: green;
-    /* Selected thumbs-up color */
 }
 
 #thumbs span.down-selected {
     background-color: red;
-    /* Selected thumbs-down color */
 }
 
 #submit-rating {

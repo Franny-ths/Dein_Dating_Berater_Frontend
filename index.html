@@ -14,7 +14,6 @@
 <body>
     <h1>Datingprofilverbesserung durch KI</h1>
     <div class="container">
-        <!-- Left side: Form for user input -->
         <div class="input-section">
             <h2>Gib deine Profildaten ein</h2>
             <form id="profile-form">
@@ -51,7 +50,6 @@
                 <label for="searchFor">Auf der Suche nach:</label>
                 <input type="text" id="searchFor-input" placeholder="Freunde/ Partner/ Was lockeres">
                 
-                <!-- Image Upload Input -->
                 <label for="profile-image">Profilbild hochladen:</label>
                 <input type="file" id="profile-image-input" accept="image/*">
 
@@ -59,7 +57,6 @@
             </form>
         </div>
 
-        <!-- Right side: Output for the AI-enhanced profile -->
         <div class="output-section">
             <h2>Verbessertes Profil</h2>
             <div class="profile-card">
@@ -87,14 +84,21 @@
                     </div>
                 </div>
             </div>
-            <div class="profile-rating">
-                <h3>Bewerte die Verbesserung</h3>
-                <div id="thumbs">
-                    <span id="thumb-up" data-value="1">👍</span>
-                    <span id="thumb-down" data-value="0">👎</span>
+            <div id="rating_field" style="display: none;">
+                <div class="profile-rating" >
+                    <h3>Bewerte die Verbesserung</h3>
+                    <div id="thumbs">
+                        <span id="thumb-up" data-value="1">👍</span>
+                        <span id="thumb-down" data-value="0">👎</span>
+                    </div>
+                    <div id="improvement_message">
+                        <label for="improvement_message">Feedback:</label>
+                        <textarea id="improvement_message_input"
+                            placeholder="Das hat mir (nicht) gefallen... "></textarea>
+                    </div>
                 </div>
+                <button id="submit-rating">Bewertung abschicken</button>
             </div>
-            <button id="submit-rating">Submit Rating</button>
         </div>
 
         <div id="wait-overlay" style="display: none;">
